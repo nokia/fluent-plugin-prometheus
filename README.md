@@ -43,9 +43,9 @@ See [sample configuration](./misc/fluentd_sample.conf), or try [tutorial](#try-p
 ### prometheus input plugin
 
 You have to configure this plugin to expose metrics collected by other promtheus plugins.
-This plugin provides a metrics HTTP endpoint to be scraped by a prometheus server on 24231/tcp(default).
+This plugin provides a metrics HTTP/HTTPS endpoint to be scraped by a prometheus server on 24231/tcp(default).
 
-With following configuration, you can access http://localhost:24231/metrics on a server where fluentd running.
+With following configuration, you can access http://localhost:24231/metrics or https://localhost:24231/metrics (when using tls) on a server where fluentd running.  
 
 ```
 <source>
@@ -58,6 +58,8 @@ More configuration parameters:
 - `bind`: binding interface (default: '0.0.0.0')
 - `port`: listen port (defaut: 24231)
 - `metrics_path`: metrics HTTP endpoint (default: /metrics)
+- `cert_file`: certificate file when using tls (defalut:'none')
+- `pkey_file`: private key file when using tls (defalut:'none')
 
 When using multiple workers, each worker binds to port + `fluent_worker_id`.
 
