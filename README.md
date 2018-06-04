@@ -392,7 +392,7 @@ In this case, `message_foo_counter` has `tag`, `hostname`, `key` and `data_type`
 Checkout repository and setup.
 
 ```
-$ git clone git://github.com/fluent/fluent-plugin-prometheus
+$ git clone https://github.com/nokia/fluent-plugin-prometheus.git
 $ cd fluent-plugin-prometheus
 $ bundle install --path vendor/bundle
 ```
@@ -430,6 +430,7 @@ Confirm that some metrics are exported via Fluentd.
 
 ```
 $ curl http://localhost:24231/metrics
+$ curl --cacert /root/cert.d/ca.crt https://localhost:24231/metrics  (when using tls)
 ```
 
 Then, make a graph on Prometheus UI. http://localhost:9090/
